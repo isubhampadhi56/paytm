@@ -1,8 +1,8 @@
 const {signupSchema,loginSchema,userUpdateSchema} = require("../validation/user");
-const {User} = require("../db");
+const {User, Account} = require("../db");
 const jwt = require("jsonwebtoken");
 const {jwtSecret} = require("../config");
-const { record } = require("zod");
+
 async function signup(req,res){
     const {success} = signupSchema.safeParse(req.body);
     if(!success) {
@@ -20,6 +20,10 @@ async function signup(req,res){
         firstName: req.body.firstName,
         lastName: req.body.lastName
     }); 
+    await Account.create({
+        userId: dbuser._id,
+        balance: 1 + Math.random()*10000
+    });
     const token = jwt.sign({
         userId: dbuser._id,
     },jwtSecret);

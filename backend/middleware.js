@@ -9,7 +9,6 @@ async function jwtValidate(req, res, next) {
         return
     }
     const jwtToken = bauth.split(' ')[1];
-    console.log(jwtToken);
     try{
         const decoded = jwt.verify(jwtToken, jwtSecret);
         req.userId = decoded.userId;

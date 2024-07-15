@@ -34,7 +34,43 @@ userSchema.methods.createHash = async function(plainText){
 userSchema.methods.validateHash = async function(candidatePasword){
     return await bcrypt.compare(candidatePasword,this.password);
 }
+
+const accountSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    balance: {
+        type: Number,
+        required: true
+    }
+});
+
+const transactionSchema = new mongoose.Schema({
+    from: {
+        type: String,
+        required: true
+    },
+    to:{
+        type:String,
+        required: true
+    },
+    amount:{
+        type:Number,
+        required: true
+    },
+    timestamp:{
+        type: Number,
+        required: true
+    }
+});
 const User = new mongoose.model("User",userSchema);
+const Account = new mongoose.model("Account",accountSchema);
+const Transaction = new mongoose.model("Transaction",transactionSchema);
 module.exports = {
-    User
+    User,
+    Account,
+    Transaction,
+    mongoose
 }

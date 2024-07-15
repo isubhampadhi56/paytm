@@ -6,7 +6,7 @@ app.post('/signin', login);
 
 app.post("/signup", signup);
 
-app.post("/update", jwtValidate, updateUser);
+app.put("/update", jwtValidate, updateUser);
 
 app.get("/bulk",jwtValidate, findUser);
 
