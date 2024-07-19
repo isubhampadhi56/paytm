@@ -48,7 +48,20 @@ async function getBalance(req,res){
     });
 }
 
+async function getTransactions(req,res){
+    const transactions = await Transaction.find({
+        $or: [
+            {to: req.userId},
+            {from: req.userId}
+        ]
+    })
+    res.json({
+        transactions: transactions
+    })
+}
+
 module.exports = {
     transferBalance,
-    getBalance
+    getBalance,
+    getTransactions
 }

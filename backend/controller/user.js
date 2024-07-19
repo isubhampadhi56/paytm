@@ -74,9 +74,29 @@ async function findUser(req,res){
     });
     res.json({users: users});
 }
+
+async function isAuthenticated(req, res){
+    res.json({
+        "authenticated": true
+    });
+}
+
+async function getUserDetails(req, res){
+    req.userId
+    const user = await User.findOne({
+        _id: req.userId
+    });
+    res.json({
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+    });
+}
 module.exports = {
     signup,
     login,
     updateUser,
-    findUser
+    findUser,
+    isAuthenticated,
+    getUserDetails
 }
