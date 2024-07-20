@@ -6,7 +6,7 @@ import {SendMoney} from "./pages/SendMoney"
 import {Transactions} from "./pages/TransactionHistory"
 import {NotFound} from "./pages/404"
 function App() {
-
+  console.log(import.meta.env.VITE_BACKEND_URL)
   return (
     <BrowserRouter>
       <Routes>

@@ -16,7 +16,7 @@ export const Signup = () => {
     const nevigate = useNavigate();
     useEffect(() => {
         (async ()=>{
-            const {data} = await axios.get("http://localhost:3000/api/v1/user/me",{
+            const {data} = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/me",{
                 headers: {
                     Authorization: localStorage.getItem("Authorization")
                 }
@@ -48,7 +48,7 @@ export const Signup = () => {
           <Button onClick={
             async ()=>{
                 const response = await axios.post(
-                    "http://localhost:3000/api/v1/user/signup",
+                    import.meta.env.VITE_BACKEND_URL + "/api/v1/user/signup",
                     {
                         username,
                         password,

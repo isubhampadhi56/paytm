@@ -6,10 +6,9 @@ export const Users = () => {
     // Replace with backend call
     const [users, setUsers] = useState([]);
     const [filter,setFilter] = useState("");
-    let keyIdx = 0;
     useEffect(()=>{
         (async ()=>{
-            const {data} = await axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter,{
+            const {data} = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/bulk?filter=" + filter,{
                 headers: {'Authorization': localStorage.getItem('Authorization')}
             });
             setUsers(data.users);

@@ -8,7 +8,7 @@ export const Appbar = () => {
     });
     useEffect(() => {
         (async () => {
-            const {data} = await axios.get("http://localhost:3000/api/v1/user/profile",{
+            const {data} = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/profile",{
                 headers: {
                     Authorization: localStorage.getItem('Authorization')
                 }
@@ -23,7 +23,7 @@ export const Appbar = () => {
         </div>
         <div className="flex">
             <div>
-                <ul className="flex flex-col font-medium p-4 mt-4 border rounded-lg space-x-8 rtl:space-x-reverse md:flex-row mt-0 border-0 bg-white">
+                <ul className="flex flex-col font-medium p-4 border rounded-lg space-x-8 rtl:space-x-reverse md:flex-row mt-0 border-0 bg-white">
                     <li className="block  rounded hover:bg-transparent hover:text-blue-700">
                         <Link to={"/dashboard"}>Dashboard </Link>
                     </li>
