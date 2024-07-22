@@ -23,7 +23,7 @@ export const Appbar = () => {
         </div>
         <div className="flex">
             <div>
-                <ul className="flex flex-col font-medium p-4 border rounded-lg space-x-8 rtl:space-x-reverse md:flex-row mt-0 border-0 bg-white">
+                <ul className="flex font-medium p-4 border rounded-lg space-x-8 rtl:space-x-reverse md:flex-row mt-0 border-0 bg-white">
                     <li className="block  rounded hover:bg-transparent hover:text-blue-700">
                         <Link to={"/dashboard"}>Dashboard </Link>
                     </li>
